@@ -11,14 +11,14 @@
                   for
                   phrases.</p>
               </div>
-              <p class="m-2"><textarea v-model="keywordsPhrases" class="w-100" style="min-height: 200px;"></textarea></p>
+              <p class="m-2"><textarea :value="inputs['keywordsPhrases']" @input="update($event, 'keywordsPhrases')" class="w-100" style="min-height: 200px;"></textarea></p>
             </div>
             <div class="card">
               <h5 class="card-title bg-primary p-3">Document Text</h5>
               <div class="card-body">
                 <p class="card-text">Document text to be redacted.</p>
               </div>
-              <p class="m-2"><textarea v-model="document" class="w-100" style="min-height: 200px;"></textarea></p>
+              <p class="m-2"><textarea :value="inputs['document']" @input="update($event, 'document')" class="w-100" style="min-height: 200px;"></textarea></p>
             </div>
             <div class="card">
               <h5 class="card-title bg-success p-3">Results</h5>
@@ -34,18 +34,27 @@
 </template>
 
 <script>
+import debounce from "lodash.debounce"
+
 export default {
   name: 'Form',
    data() {
     return {
-      keywordsPhrases: "",
-      document: ""
+      inputs: {
+        keywordsPhrases: "",
+      document: ""}
     }
   },
   computed: {
     redacted () {
-      return this.keywordsPhrases + this.document
+      return this.inputs["keywordsPhrases"] + this.inputs["document"]
     }
+  },
+  methods: {
+    update:
+      debounce(function(event, key) {
+      this.inputs[key] = event.target.value;
+    }, 300)
   }
 }
 </script>
