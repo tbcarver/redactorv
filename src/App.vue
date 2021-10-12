@@ -5,7 +5,7 @@
       <div class="container text-white">
         <div class="row">
           <div class="col">
-            <h1>Redactorf</h1>
+            <h1>Redactorv</h1>
           </div>
         </div>
       </div>
