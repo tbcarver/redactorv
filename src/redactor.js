@@ -10,8 +10,8 @@ redactor.redact = function(keywordsPharases, document) {
 	if (keywordsPharases && document) {
 		const { keywords, phrases } = parseKeywordsPharases(keywordsPharases);
 	
-		document = coreString.replaceAll(document, phrases, replacement);
-		document = coreString.replaceAll(document, keywords, replacement);		
+		document = coreString.replaceAllWords(document, phrases, replacement);
+		document = coreString.replaceAllWords(document, keywords, replacement);		
 	}
 
 	return document;

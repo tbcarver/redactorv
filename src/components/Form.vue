@@ -69,7 +69,7 @@ export default {
   methods: {
     update: debounce(function (event, key) {
       this.inputs[key] = event.target.value;
-    }, 300),
+    }, 500),
   },
 };
 </script>
